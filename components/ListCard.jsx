@@ -4,18 +4,16 @@ import { StyleSheet, Text, View, Button } from "react-native";
 export default function ListCard(props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{props.title}</Text>
-      <Text style={styles.description}>{props.description}</Text>
+      <Text style={styles.title}>TITRE : {props.title}</Text>
+      <Text style={styles.description}>DESCRIPTION : {props.description}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
   },
   title: {
     fontWeight: "bold",
@@ -24,5 +22,6 @@ const styles = StyleSheet.create({
   description: {
     fontStyle: "italic",
     fontSize: 20,
+    marginBottom: 20,
   },
 });

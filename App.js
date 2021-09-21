@@ -14,19 +14,22 @@ export default function App() {
     setLists([...lists, { title: title, description: description }]);
   };
 
-  console.log(`lists`, lists);
+  // console.log(`lists`, lists);
   return (
     <View style={styles.container}>
       {lists &&
         lists.map((list) => (
           <ListCard title={list.title} description={list.description} />
         ))}
-      <Button title="+ Add a list" onPress={toggleModal} />
-      <ListModal
-        modalVisible={modalVisible}
-        handleSave={handleSave}
-        toggleModal={toggleModal}
-      />
+      {modalVisible ? (
+        <ListModal
+          modalVisible={modalVisible}
+          handleSave={handleSave}
+          toggleModal={toggleModal}
+        />
+      ) : (
+        <Button title="+ Add a list" onPress={toggleModal} />
+      )}
     </View>
   );
 }
