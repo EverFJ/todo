@@ -1,20 +1,115 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View, Modal } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View, Text, Modal, Button, TextInput } from "react-native";
 
 export default function ListModal(props) {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
+  const handleSave = () => {
+    props.history.push("/", {
+      title: title,
+      description: description,
+    });
+  };
+  //   console.log(`title`, title);
   return (
-    <View style={styles.container}>
-      <Text>ListModal</Text>
+    <View style={styles.centeredView}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <TextInput
+              style={styles.input}
+              placeholder="list name"
+              value={title}
+              onChangeText={setTitle}
+            />
+
+            <TextInput
+              style={styles.input}
+              placeholder="list description"
+              value={description}
+              onChangeText={setDescription}
+            />
+            {title.length < 5 ? (
+              <>
+                <Button
+                  title="Save"
+                  disabled
+                  style={[styles.button, styles.buttonClose]}
+                />
+                <Text>Title must be at least 5 characters</Text>
+              </>
+            ) : (
+              <Button
+                title="Save"
+                style={[styles.button, styles.buttonClose]}
+                onPress={handleSave}
+              />
+            )}
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  centeredView: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+  },
+  input: {
+    height: 40,
+    width: "90%",
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
