@@ -1,29 +1,17 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { StyleSheet, View, Text, Modal, Button, TextInput } from "react-native";
 
 export default function ListModal(props) {
-  const [modalVisible, setModalVisible] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleSave = () => {
-    props.history.push("/", {
-      title: title,
-      description: description,
-    });
-  };
-  //   console.log(`title`, title);
+  // console.log(`props`, props);
   return (
     <View style={styles.centeredView}>
       <Modal
         animationType="slide"
         transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
-        }}
+        visible={props.modalVisible}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
@@ -53,7 +41,9 @@ export default function ListModal(props) {
               <Button
                 title="Save"
                 style={[styles.button, styles.buttonClose]}
-                onPress={handleSave}
+                onPress={() => {
+                  props.handleSave(title, description);
+                }}
               />
             )}
           </View>
