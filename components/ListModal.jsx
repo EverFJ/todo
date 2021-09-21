@@ -1,10 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { NativeRouter, Route } from "react-router";
 
 export default function App() {
-  return <View style={styles.container}></View>;
+  return (
+    <View style={styles.container}>
+      <Text>ListModal</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
