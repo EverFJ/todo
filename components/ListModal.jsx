@@ -43,6 +43,7 @@ export default function ListModal(props) {
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => {
                   props.handleSave(title, description);
+                  props.toggleModal();
                 }}
               />
             )}

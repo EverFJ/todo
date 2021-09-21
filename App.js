@@ -5,7 +5,11 @@ import ListCard from "./components/ListCard";
 
 export default function App() {
   const [lists, setLists] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  };
   const handleSave = (title, description) => {
     setLists([...lists, { title: title, description: description }]);
   };
@@ -13,18 +17,16 @@ export default function App() {
   console.log(`lists`, lists);
   return (
     <View style={styles.container}>
-      <Text>TODO LIST</Text>
       {lists &&
         lists.map((list) => (
           <ListCard title={list.title} description={list.description} />
         ))}
-      <Button
-        title="+ Add a list"
-        onPress={() => {
-          setModalVisible(!modalVisible);
-        }}
+      <Button title="+ Add a list" onPress={toggleModal} />
+      <ListModal
+        modalVisible={modalVisible}
+        handleSave={handleSave}
+        toggleModal={toggleModal}
       />
-      <ListModal modalVisible={modalVisible} handleSave={handleSave} />
     </View>
   );
 }
