@@ -5,7 +5,6 @@ import ListCard from "./components/ListCard";
 
 export default function App() {
   const [lists, setLists] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
 
   const handleSave = (title, description) => {
     setLists([...lists, { title: title, description: description }]);
