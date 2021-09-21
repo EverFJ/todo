@@ -1,17 +1,15 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
+import Home from "./components/Home";
+import ListModal from "./components/ListModal";
 import { StyleSheet, Text, View } from "react-native";
-import { NativeRouter, Route } from "react-router";
+import { NativeRouter, Route } from "react-router-native";
 
 export default function App() {
-  return <View style={styles.container}></View>;
+  return (
+    <NativeRouter>
+      <Route exact path="/" component={Home} />
+      <Route path="/listmodal" component={ListModal} />
+    </NativeRouter>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

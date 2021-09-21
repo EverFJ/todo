@@ -1,11 +1,17 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, Modal } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 
-export default function ListModal(props) {
+export default function Home(props) {
   return (
     <View style={styles.container}>
-      <Text>ListModal</Text>
+      <Text>Home</Text>
+      <Button
+        title="+ Add a list"
+        onPress={() => {
+          props.history.push("/listmodal");
+        }}
+      />
     </View>
   );
 }
