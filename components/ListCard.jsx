@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function ListCard(props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>TITRE : {props.title}</Text>
-      <Text style={styles.description}>DESCRIPTION : {props.description}</Text>
+      <Text style={styles.title}>{props.title} : </Text>
+      <Text style={styles.description}>{props.description}</Text>
     </View>
   );
 }

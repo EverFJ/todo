@@ -30,17 +30,13 @@ export default function ListModal(props) {
             />
             {title.length < 5 ? (
               <>
-                <Button
-                  title="Save"
-                  disabled
-                  style={[styles.button, styles.buttonClose]}
-                />
+                <Button title="Save" disabled style={styles.button} />
                 <Text>Title must be at least 5 characters</Text>
               </>
             ) : (
               <Button
                 title="Save"
-                style={[styles.button, styles.buttonClose]}
+                style={styles.button}
                 onPress={() => {
                   props.handleSave(title, description);
                   props.toggleModal();
@@ -80,13 +76,9 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
     backgroundColor: "#2196F3",
   },
+
   textStyle: {
     color: "white",
     fontWeight: "bold",

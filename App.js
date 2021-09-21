@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Modal, Button, TextInput } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Button, ScrollView } from "react-native";
 import ListModal from "./components/ListModal";
 import ListCard from "./components/ListCard";
 
@@ -16,7 +16,7 @@ export default function App() {
 
   // console.log(`lists`, lists);
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       {lists &&
         lists.map((list) => (
           <ListCard title={list.title} description={list.description} />
@@ -28,9 +28,9 @@ export default function App() {
           toggleModal={toggleModal}
         />
       ) : (
-        <Button title="+ Add a list" onPress={toggleModal} />
+        <Button title="+ Add a task" onPress={toggleModal} />
       )}
-    </View>
+    </ScrollView>
   );
 }
 
